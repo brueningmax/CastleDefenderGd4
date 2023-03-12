@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhyedbldwvc7c"]
+
+[ext_resource type="Script" path="res://scenes/characters/Player.gd" id="1_q1iit"]
+[ext_resource type="Texture2D" uid="uid://bicpheaxa83rs" path="res://icon.svg" id="2_s5u5y"]
+[ext_resource type="PackedScene" uid="uid://cikmm0qnuq32g" path="res://scenes/components/Corruption_handler.tscn" id="3_d2o8v"]
+[ext_resource type="Script" path="res://scenes/characters/stats.gd" id="4_70cjs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fljc2"]
+radius = 2.0
+height = 6.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_q1iit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("2_s5u5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fljc2")
+
+[node name="corruption_handler" parent="." instance=ExtResource("3_d2o8v")]
+
+[node name="stats" type="Node" parent="."]
+script = ExtResource("4_70cjs")

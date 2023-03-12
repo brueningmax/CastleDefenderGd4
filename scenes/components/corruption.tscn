@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwjq8js5xbm4n"]
+
+[ext_resource type="Texture2D" uid="uid://d1avdrrnuu6nl" path="res://Assets/particlePack_1.1/PNG (Transparent)/smoke_04.png" id="1_lkw0d"]
+
+[sub_resource type="Curve" id="Curve_ajgcb"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.010989, 7.27274), 0.0, 0.0, 0, 0, Vector2(0.956044, 94.5455), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nmu03"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.945055, 0.0454545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_eg8u7"]
+min_value = -1.0
+max_value = 44.12
+_data = [Vector2(0, 0.509091), 0.0, 0.0, 0, 0, Vector2(0.989011, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 1
+preprocess = 0.2
+lifetime_randomness = 0.4
+texture = ExtResource("1_lkw0d")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 8)
+gravity = Vector2(0, -16)
+linear_accel_curve = SubResource("Curve_ajgcb")
+angle_max = 360.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_nmu03")
+color = Color(0.533333, 0, 0.552941, 0.494118)
+hue_variation_max = 0.24
+hue_variation_curve = SubResource("Curve_eg8u7")

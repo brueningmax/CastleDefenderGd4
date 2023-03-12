@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cikmm0qnuq32g"]
+
+[ext_resource type="Script" path="res://scenes/components/corruption_handler.gd" id="1_ae8dh"]
+
+[node name="corruption_handler" type="Node"]
+script = ExtResource("1_ae8dh")
