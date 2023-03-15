@@ -12,6 +12,14 @@ height = 6.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_q1iit")
 
+[node name="corruption_handler" parent="." instance=ExtResource("3_d2o8v")]
+
+[node name="stats" type="Node" parent="."]
+script = ExtResource("4_70cjs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 scale = Vector2(0.0625, 0.0625)
@@ -21,8 +29,3 @@ texture = ExtResource("2_s5u5y")
 position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fljc2")
-
-[node name="corruption_handler" parent="." instance=ExtResource("3_d2o8v")]
-
-[node name="stats" type="Node" parent="."]
-script = ExtResource("4_70cjs")

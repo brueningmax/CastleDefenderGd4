@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://btv2en3du8kx"]
+
+[ext_resource type="Texture2D" uid="uid://bicpheaxa83rs" path="res://icon.svg" id="1_6wqbs"]
+[ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_ypin7"]
+[ext_resource type="PackedScene" uid="uid://cikmm0qnuq32g" path="res://scenes/components/Corruption_handler.tscn" id="2_pam8h"]
+[ext_resource type="Script" path="res://scenes/characters/stats.gd" id="4_btejn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlhfq"]
+radius = 2.0
+height = 6.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ypin7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rlhfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("1_6wqbs")
+offset = Vector2(0, -64)
+
+[node name="corruption_handler" parent="." instance=ExtResource("2_pam8h")]
+
+[node name="stats" type="Node" parent="."]
+script = ExtResource("4_btejn")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+
+[connection signal="target_reached" from="NavAgent" to="." method="_on_nav_agent_target_reached"]
