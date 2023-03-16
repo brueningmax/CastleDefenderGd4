@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://btv2en3du8kx"]
+[gd_scene load_steps=8 format=3 uid="uid://btv2en3du8kx"]
 
 [ext_resource type="Texture2D" uid="uid://bicpheaxa83rs" path="res://icon.svg" id="1_6wqbs"]
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_ypin7"]
 [ext_resource type="PackedScene" uid="uid://cikmm0qnuq32g" path="res://scenes/components/Corruption_handler.tscn" id="2_pam8h"]
 [ext_resource type="Script" path="res://scenes/characters/stats.gd" id="4_btejn"]
+[ext_resource type="PackedScene" uid="uid://bf6e77jqrce1a" path="res://scenes/components/soft_collision.tscn" id="5_tcbxa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlhfq"]
 radius = 2.0
 height = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7qfl"]
+radius = 3.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ypin7")
@@ -29,4 +33,12 @@ script = ExtResource("4_btejn")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 
+[node name="SoftCollision" parent="." instance=ExtResource("5_tcbxa")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_d7qfl")
+
 [connection signal="target_reached" from="NavAgent" to="." method="_on_nav_agent_target_reached"]
+
+[editable path="SoftCollision"]

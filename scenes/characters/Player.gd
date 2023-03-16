@@ -1,7 +1,7 @@
 extends CharacterBody2D
 #onready var weapon = $weapon.get_child(0)
 #onready var animation_player = $AnimationPlayer
-
+@onready var soft_collision : Area2D = $SoftCollision
 @export var speed: int = 200 
 var alive = true
 
@@ -33,6 +33,7 @@ func _physics_process(delta):
 #			animation_player.play("idle")
 #		else:
 #			animation_player.play("run")
+		velocity = velocity.normalized() + soft_collision.get_push_vector()
 		move_and_slide()
 		velocity = Vector2.ZERO
 	

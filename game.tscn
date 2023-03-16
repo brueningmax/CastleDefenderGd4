@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwnksn7tf7cb3"]
+[gd_scene load_steps=6 format=3 uid="uid://bwnksn7tf7cb3"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_vwwyp"]
 [ext_resource type="PackedScene" uid="uid://x8vggfowsgpe" path="res://scenes/Level/map.tscn" id="2_24dv5"]
+[ext_resource type="PackedScene" uid="uid://ojiamnab4ykt" path="res://scenes/components/enemy_spawn.tscn" id="3_6axkq"]
 [ext_resource type="PackedScene" uid="uid://dhyedbldwvc7c" path="res://scenes/characters/player.tscn" id="3_a1q81"]
 [ext_resource type="PackedScene" uid="uid://btv2en3du8kx" path="res://scenes/characters/enemy.tscn" id="4_e3iy4"]
 
@@ -11,8 +12,17 @@ script = ExtResource("1_vwwyp")
 [node name="Map" parent="." instance=ExtResource("2_24dv5")]
 unique_name_in_owner = true
 
+[node name="Enemies" type="Node" parent="Map"]
+unique_name_in_owner = true
+
+[node name="EnemySpawn" parent="Map/Enemies" instance=ExtResource("3_6axkq")]
+position = Vector2(105, 63)
+
+[node name="Enemy" parent="Map/Enemies" instance=ExtResource("4_e3iy4")]
+position = Vector2(99, 32)
+
+[node name="Enemy2" parent="Map/Enemies" instance=ExtResource("4_e3iy4")]
+position = Vector2(97, 31)
+
 [node name="Player" parent="." instance=ExtResource("3_a1q81")]
 position = Vector2(69, 54)
-
-[node name="Enemy" parent="." instance=ExtResource("4_e3iy4")]
-position = Vector2(200, 65)
