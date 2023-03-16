@@ -8,7 +8,6 @@ signal change_corruption(pos, amount)
 func _ready():
 	Tile_Map.connect_signal(self)
 
-
 func _process(delta):
 	corrupt_tile(get_parent().position)
 

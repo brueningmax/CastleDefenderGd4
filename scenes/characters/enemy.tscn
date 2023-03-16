@@ -1,44 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://btv2en3du8kx"]
+[gd_scene load_steps=7 format=3 uid="uid://bhxvy73jmxhso"]
 
 [ext_resource type="Texture2D" uid="uid://bicpheaxa83rs" path="res://icon.svg" id="1_6wqbs"]
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_ypin7"]
 [ext_resource type="PackedScene" uid="uid://cikmm0qnuq32g" path="res://scenes/components/Corruption_handler.tscn" id="2_pam8h"]
 [ext_resource type="Script" path="res://scenes/characters/stats.gd" id="4_btejn"]
-[ext_resource type="PackedScene" uid="uid://bf6e77jqrce1a" path="res://scenes/components/soft_collision.tscn" id="5_tcbxa"]
+[ext_resource type="PackedScene" uid="uid://bej3bv8onqy8" path="res://scenes/components/enemy_navigation.tscn" id="4_pey06"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlhfq"]
-radius = 2.0
-height = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_d7qfl"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mii50"]
+radius = 6.0
+height = 16.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ypin7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_rlhfq")
+shape = SubResource("CapsuleShape2D_mii50")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0625, 0.0625)
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_6wqbs")
-offset = Vector2(0, -64)
 
 [node name="corruption_handler" parent="." instance=ExtResource("2_pam8h")]
 
 [node name="stats" type="Node" parent="."]
 script = ExtResource("4_btejn")
 
-[node name="NavAgent" type="NavigationAgent2D" parent="."]
-
-[node name="SoftCollision" parent="." instance=ExtResource("5_tcbxa")]
-
-[node name="CollisionShape2D" parent="SoftCollision" index="0"]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_d7qfl")
-
-[connection signal="target_reached" from="NavAgent" to="." method="_on_nav_agent_target_reached"]
-
-[editable path="SoftCollision"]
+[node name="enemy_navigation" parent="." instance=ExtResource("4_pey06")]

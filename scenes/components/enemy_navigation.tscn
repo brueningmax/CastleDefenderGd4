@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bej3bv8onqy8"]
+
+[ext_resource type="Script" path="res://EnemieNavigation.gd" id="1_atmed"]
+[ext_resource type="PackedScene" uid="uid://bf6e77jqrce1a" path="res://scenes/components/soft_collision.tscn" id="2_6i3qh"]
+
+[node name="enemy_navigation" type="Node2D"]
+script = ExtResource("1_atmed")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SoftCollision" parent="." instance=ExtResource("2_6i3qh")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="SoftCollision"]
