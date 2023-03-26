@@ -8,13 +8,13 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vwwyp")
 
-[node name="Map" parent="." instance=ExtResource("2_24dv5")]
+[node name="map" parent="." instance=ExtResource("2_24dv5")]
 unique_name_in_owner = true
 
-[node name="Enemies" type="Node" parent="Map"]
+[node name="Enemies" type="Node" parent="map"]
 unique_name_in_owner = true
 
-[node name="EnemySpawn" parent="Map/Enemies" instance=ExtResource("3_6axkq")]
+[node name="EnemySpawn" parent="map/Enemies" instance=ExtResource("3_6axkq")]
 position = Vector2(105, 63)
 
 [node name="Players" type="Node" parent="."]

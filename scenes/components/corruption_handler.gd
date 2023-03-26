@@ -1,6 +1,6 @@
-extends Node
+extends Node2D
 
-@onready var Tile_Map = get_tree().get_root().get_node("Game/Map")
+@onready var Tile_Map : TileMap = get_tree().get_root().get_node('Game/map')
 @onready var Parent_stats = get_parent().get_node("stats")
 var current_tile = Vector2.ZERO
 signal change_corruption(pos, amount)
@@ -9,7 +9,7 @@ func _ready():
 	Tile_Map.connect_signal(self)
 
 func _process(delta):
-	corrupt_tile(get_parent().position)
+	corrupt_tile(global_position)
 
 func corrupt_tile(position):
 	var occupied_tile = Tile_Map.local_to_map(position)
